@@ -1,0 +1,30 @@
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:lts
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    ports:
+      - 9443:9443
+      - 8082:9000
+    labels:
+      - 'traefik.http.routers.portainer.rule=HostRegexp(`^portainer\..+$`) || PathPrefix(`/portainer`)'
+      - "traefik.http.middlewares.portainer-remove-prefix.stripprefix.prefixes=/portainer"
+      - "traefik.http.routers.portainer.middlewares=portainer-remove-prefix"
+      - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+      - "traefik.docker.network=traefik-network"
+    networks:
+      - default
+      - traefik-network
+
+volumes:
+  portainer_data:
+    name: portainer_data
+    
+networks:
+  default:
+    name: portainer_network
+  traefik-network:
+    external: true
