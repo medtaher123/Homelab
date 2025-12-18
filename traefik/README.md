@@ -20,6 +20,16 @@ There are a couple of ways to tell Traefik what to do:
 
 Personally, I like keeping Traefik configs together, but here I used **labels** to experiment and learn stuff.
 
+## Networks and Traefik 🌐
+
+For Traefik to route traffic to a service, the service must share a network with Traefik. In my setup, I created an **external network** called `traefik-network` where all my containers connect.
+
+You can also:
+
+* Create **multiple networks** (e.g., `pihole-traefik`, `portainer-traefik`) if you want separation and don't want containers to communicate with each other.
+* Link Traefik to the **host network** without connecting to individual containers.
+* Expose services that are **not running in Docker** (like my Pi-hole, exemple below) through Traefik using the host network.
+
 ## The Legendary `traefikize.sh` Script (that I am proud of) 🥳
 
 Before using the script, make sure you have **fzf** and **yq** installed, otherwise it won't work.

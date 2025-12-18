@@ -1,0 +1,13 @@
+http:
+  routers:
+    pihole:
+      rule: 'HostRegexp(`^pihole\..+$`) || PathPrefix(`/pihole`)'
+      service: pihole
+      entrypoints:
+        - web
+
+  services:
+    pihole:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:81"
