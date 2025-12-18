@@ -4,6 +4,9 @@ Welcome to my homelab. 🎉
 
 This repo exists because I had a spare computer, too much curiosity, and just enough free time to turn it into a server. 😎
 
+For a detailed guide on installation, setup, and power/network management, check out [Homelab Installation & Setup Guide](./Homelab_Installation_Guide.md).
+
+
 ## What this repo is (and is not) 🧐
 
 Yes, you *can* clone this repository.
