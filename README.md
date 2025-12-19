@@ -13,14 +13,13 @@ A self-hosted homelab built on Ubuntu Server, focused on Dockerized services, DN
 
 ## At a glance 🔍
 
-- Ubuntu Server based homelab
-- Docker and docker-compose for service orchestration
-- Local DNS and internal domain management
-- Home network and service exposure management
-- Reverse proxy, TLS, and routing
-- Monitoring, backups, and persistence
-- Real-world Linux administration and troubleshooting
-- Documentation-driven experimentation
+- **Ubuntu Server** based homelab  
+- **Docker** and **docker-compose** for service orchestration  
+- **Local DNS** and **internal domain management**  
+- **Home network** and service exposure management  
+- **Reverse proxy**, **TLS**, and routing  
+- **Monitoring**, **backups**, and persistence  
+- **Linux administration** and troubleshooting  
 
 
 Welcome to my homelab. 🎉
