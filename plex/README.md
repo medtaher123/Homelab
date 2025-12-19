@@ -22,7 +22,7 @@ The Compose file contains the **Plex Media Server** service:
 * **Volumes**:
   - `./config` → Plex server configuration
   - `./transcode` → Temporary transcode files
-  - `<path/to/your/media/folder>` → Media library (movies, shows, music)
+  - `<path/to/your/media/folder>` → Media library (movies, TV shows, music). **Organize your folders into libraries** (e.g., `Movies`, `TVShows`, `Music`) for Plex to detect content properly. You can use the same library structure for Jellyfin if you want to run both.
 
 * **Environment variables**:
   - `TZ` → Set your timezone
@@ -44,6 +44,19 @@ The Compose file contains the **Plex Media Server** service:
   or via your local network if using host mode.
 
 * Complete the Plex setup in the web interface to create your admin account and add libraries.
+
+* Remember to organize your media folders into libraries (`Movies`, `TVShows`, etc.) so Plex can detect them correctly. The same libraries can be used for Jellyfin if you want to run both.
+
+---
+
+## Plex vs Jellyfin
+
+I have **Jellyfin** running in another folder as well. Both Plex and Jellyfin do basically the same thing—serve media—but have different philosophies:
+
+* **Plex**: Closed-source, polished UI, supports streaming to lots of devices, remote access works out of the box, some features require a Plex Pass subscription.  
+* **Jellyfin**: Fully open-source, free, similar features but some setups (like remote access) require extra configuration, updates faster because it’s community-driven.
+
+**Opinion**: If you want convenience and broad device support, Plex is smoother. If you want control, free software, and faster community updates, Jellyfin is better.
 
 ---
 
