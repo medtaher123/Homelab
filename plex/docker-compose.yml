@@ -15,7 +15,6 @@ services:
     environment:
       - TZ=Africa/Tunis
       - PLEX_CLAIM=claim-PcR8XXmtBrRmXNDSJhjs #to be modified each time the volumes are deleted: https://www.plex.tv/sign-in/?forwardUrl=https%3A%2F%2Faccount.plex.tv%2Fclaim&context%5Bdevice%5D%5Bproduct%5D=Plex+Mediaverse
-      #      - ADVERTISE_IP=http://slimen:32400/
     network_mode: host
     #    hostname: slimen
     volumes:
