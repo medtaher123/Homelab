@@ -1,0 +1,29 @@
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    #    ports:
+    #      - 32400:32400/tcp
+    #      - 8324:8324/tcp
+    #      - 32469:32469/tcp
+    #      - 1900:1900/udp
+    #      - 32410:32410/udp
+    #      - 32412:32412/udp
+    #      - 32413:32413/udp
+    #      - 32414:32414/udp
+    environment:
+      - TZ=Africa/Tunis
+      - PLEX_CLAIM=claim-PcR8XXmtBrRmXNDSJhjs #to be modified each time the volumes are deleted: https://www.plex.tv/sign-in/?forwardUrl=https%3A%2F%2Faccount.plex.tv%2Fclaim&context%5Bdevice%5D%5Bproduct%5D=Plex+Mediaverse
+      #      - ADVERTISE_IP=http://slimen:32400/
+    network_mode: host
+    #    hostname: slimen
+    volumes:
+      - ./config:/config
+      - ./transcode:/transcode
+      - <path/to/your/media/folder>:/data
+    labels:
+      - 'traefik.http.routers.plex.rule=HostRegexp(`^plex\..+$`) || PathPrefix(`/plex`)'
+      - "traefik.http.middlewares.plex-remove-prefix.stripprefix.prefixes=/plex"
+      - "traefik.http.routers.plex.middlewares=plex-remove-prefix"
+      - "traefik.http.services.plex.loadbalancer.server.port=32400"
