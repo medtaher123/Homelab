@@ -1,5 +1,28 @@
 # Homelab 🖥️⚡
 
+![Ubuntu Server](https://img.shields.io/badge/OS-Ubuntu%20Server-E95420?logo=ubuntu&logoColor=white)
+![Linux](https://img.shields.io/badge/Kernel-Linux-FCC624?logo=linux&logoColor=black)
+![Docker](https://img.shields.io/badge/Containers-Docker-2496ED?logo=docker&logoColor=white)
+![DNS](https://img.shields.io/badge/DNS-Local%20DNS-6f42c1)
+![VPN](https://img.shields.io/badge/VPN-Tailscale-000000?logo=tailscale)
+![Private Cloud](https://img.shields.io/badge/Private%20Cloud-Self--Hosted-2ea44f)
+
+
+
+A self-hosted homelab built on Ubuntu Server, focused on Dockerized services, DNS, and home infrastructure management.
+
+## At a glance 🔍
+
+- Ubuntu Server based homelab
+- Docker and docker-compose for service orchestration
+- Local DNS and internal domain management
+- Home network and service exposure management
+- Reverse proxy, TLS, and routing
+- Monitoring, backups, and persistence
+- Real-world Linux administration and troubleshooting
+- Documentation-driven experimentation
+
+
 Welcome to my homelab. 🎉
 
 This repo exists because I had a spare computer, too much curiosity, and just enough free time to turn it into a server. 😎
