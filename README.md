@@ -82,3 +82,13 @@ Some setups are clean. Some are messy. Some exist only because I wanted to see i
 That is the point. 😏
 
 Enjoy, and may your servers stay online! 🌐
+
+## Container images 🐳
+
+Many Docker services in this homelab are based on images from **LinuxServer.io**.
+
+LinuxServer.io is a community that maintains well-documented, regularly updated Docker images for self-hosted services like Plex, Nextcloud, WireGuard, and more. If you see image names starting with `lscr.io/linuxserver/...`, that is where they come from.
+
+Their documentation is usually the first place to look if you want to understand environment variables, volumes, or permissions used in this repo.
+
+Opinion: LinuxServer.io images are reliable and beginner-friendly, and they remove a lot of setup friction, which makes them perfect for homelabs.
