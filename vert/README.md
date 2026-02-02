@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/bf441748-0ec5-4c8a-b3e5-11301ee3f0bd" alt="VERT's logo" height="100">
+</p>
+
 # VERT Docker Setup Guide 🔄
 
 **VERT** is a privacy-focused file conversion utility that converts files **locally on your device** using WebAssembly instead of uploading them to the cloud. Think of it as your own self-hosted file converter that supports **250+ file formats** for images, audio, documents, and videos. 🎯
