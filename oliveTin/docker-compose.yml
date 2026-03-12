@@ -1,0 +1,25 @@
+services:
+  olivetin:
+    container_name: olivetin
+    image: jamesread/olivetin
+    user: root
+    volumes:
+      - ./config:/config
+      - ./ssh:/home/olivetin/.ssh
+    ports:
+      - "1337:1337"
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    labels:
+      - 'traefik.http.routers.olivetin.rule=HostRegexp(`^olivetin\..+$`) || PathPrefix(`/olivetin`)'
+      - "traefik.http.middlewares.olivetin-remove-prefix.stripprefix.prefixes=/olivetin"
+      - "traefik.http.routers.olivetin.middlewares=olivetin-remove-prefix"
+      - "traefik.http.services.olivetin.loadbalancer.server.port=1337"
+      - "traefik.docker.network=traefik-network"
+    networks:
+      - default
+      - traefik-network
+networks:
+  traefik-network:
+    external: true

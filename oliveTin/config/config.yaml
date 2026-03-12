@@ -1,0 +1,14 @@
+actions:
+  - title: Reboot Host Machine
+    icon: "&#128259;"
+    shell: ssh -i /home/olivetin/.ssh/id_ed25519 -o StrictHostKeyChecking=no homelab@host.docker.internal "sudo reboot"
+    arguments:
+      - type: confirmation
+        title: Are you sure you want to REBOOT?
+
+  - title: Shut Down Host Machine
+    icon: "&#128683;"
+    shell: ssh -i /home/olivetin/.ssh/id_ed25519 -o StrictHostKeyChecking=no homelab@host.docker.internal "sudo poweroff"
+    arguments:
+      - type: confirmation
+        title: DANGER! Are you sure you want to SHUT DOWN?
