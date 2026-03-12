@@ -1,0 +1,24 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:2
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+    ports:
+      - "3001:3001"
+    labels:
+      - 'traefik.http.routers.kuma.rule=HostRegexp(`^kuma\..+$`) || PathPrefix(`/kuma`)'
+      - "traefik.http.middlewares.kuma-remove-prefix.stripprefix.prefixes=/kuma"
+      - "traefik.http.routers.kuma.middlewares=kuma-remove-prefix"
+      - "traefik.http.services.kuma.loadbalancer.server.port=3001"
+      - "traefik.docker.network=traefik-network"
+    networks:
+      - default
+      - traefik-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+networks:
+  traefik-network:
+    external: true
