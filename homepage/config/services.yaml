@@ -1,0 +1,137 @@
+
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+
+- Automation & Tools:
+    - n8n:
+        icon: n8n.png
+        href: http://n8n.homelab.net # Or your preferred URL
+        description: Workflow Automation
+        server: my-docker
+        container: n8n-n8n-1
+
+    - Glance:
+        icon: glance.png # Homepage has a native icon for Glance
+        href: http://glance.homelab.net # Update to your actual URL
+        description: Feed Dashboard
+        server: my-docker
+        container: glance
+
+    - Vert:
+        icon: nodejs.png # Generic icon, change if Vert has a specific one
+        href: http://vert.homelab.net # Update to your actual URL
+        description: Web App / Service
+        server: my-docker
+        container: vert
+
+- Infrastructure & Routing:
+    - Traefik:
+        icon: traefik.png
+        href: http://traefik.homelab.net # Update to your Traefik dashboard URL
+        description: Reverse Proxy
+        server: my-docker
+        container: traefik-traefik-1
+        widget:
+          type: traefik
+          # Assuming Traefik API is on port 8080 on the internal network
+          url: http://traefik-traefik-1:8080
+
+    - Nginx Web Server:
+        icon: nginx.png
+        href: http://homelab:1013 
+        description: Static Web Server
+        server: my-docker
+        container: poni_web_server
+
+    - Portainer:
+        icon: portainer.png
+        href: http://portainer.homelab.net
+        description: Container Management
+        server: my-docker # Links to your docker.yaml
+        container: portainer
+        widget:
+          type: portainer
+          url: http://portainer:9000 # Internal Docker network URL
+          env: 3 # Usually 1 for local endpoint
+          key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+   
+
+- Network & DNS:
+    - Tailscale:
+        icon: tailscale.png
+        href: http://tailscale.homelab.net #https://login.tailscale.com/admin/machines # Or your specific machine's IP
+        description: VPN & Mesh Network
+        widget:
+          type: tailscale
+          deviceid: nX2WvEigPN11CNTRL # E.g., 123456789CNTRL
+          key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
+
+    - Pi-hole:
+        icon: pi-hole.png
+        href: http://pihole.homelab.net/admin # The URL you use to open it in your browser
+        description: Network Ad Blocker
+        widget:
+          type: pihole
+          # MUST be your actual Ubuntu server IP so the Docker container can reach it!
+          url: http://host.docker.internal:81
+          key: {{HOMEPAGE_VAR_PIHOLE_KEY}}
+          version: 6 # Uncomment this line ONLY if you are running the brand new Pi-hole v6
+
+
+- Tailscale Network:
+    - First Device:
+        icon: tailscale.png
+        description: 192.168.1.100
+        href: http://tailscale.homelab.net
+        widget:
+          type: tailscale
+          deviceid: {{HOMEPAGE_VAR_FIRST_DEVICE_TAILSCALE_ID}}
+          key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
+
+    - Second Device:
+        icon: tailscale.png
+        description: 192.168.1.102
+        widget:
+          type: tailscale
+          deviceid: {{HOMEPAGE_VAR_SECOND_DEVICE_TAILSCALE_ID}}
+          key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
+
+    - Third Device:
+        icon: tailscale.png
+        description: 192.168.1.202
+        widget:
+          type: tailscale
+          deviceid: {{HOMEPAGE_VAR_THIRD_DEVICE_TAILSCALE_ID}}
+          key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
+
+    
+- Utils:
+    - Print Server (CUPS):
+        icon: printer.png # Homepage has a generic printer icon built-in
+        href: http://homelab:631 # Change to your actual server IP
+        description: Printer Management
+        # This tells Homepage to check if the web interface is responding
+        siteMonitor: http://host.docker.internal:631
+
+- Automation:
+    - OliveTin:
+        icon: terminal
+        href: http://olivetin.homelab.net
+        description: Server Shell Commands
+
+- Media2:
+    - Plex:
+        icon: plex.png
+        href: http://plex.homelab.net
+        server: my-docker
+        container: plex
+
+    - Jellyfin:
+        icon: jellyfin.png
+        href: http://jellyfin.homelab.local
+        server: my-docker
+        container: jellyfin
+
+

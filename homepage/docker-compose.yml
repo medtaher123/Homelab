@@ -1,0 +1,31 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    env_file:
+      - .env
+    ports:
+      - 8084:3000
+    volumes:
+      - ./config:/app/config # Make sure your local config directory exists
+      - ./bg-images:/app/public/bg-images
+      - /var/run/docker.sock:/var/run/docker.sock:ro # (optional) For docker integrations
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: "*" #gethomepage.dev # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+      #for now i set it to "*" maybe later set my real domain names
+    labels:
+      - 'traefik.http.routers.home.rule=HostRegexp(`^home\..+$`) || PathPrefix(`/home`)'
+      - "traefik.http.middlewares.home-remove-prefix.stripprefix.prefixes=/home"
+      - "traefik.http.routers.home.middlewares=home-remove-prefix"
+      - "traefik.http.services.home.loadbalancer.server.port=3000"
+      - "traefik.docker.network=traefik-network"
+    networks:
+      - default
+      - traefik-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
+networks:
+  traefik-network:
+    external: true

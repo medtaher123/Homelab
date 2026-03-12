@@ -1,0 +1,27 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+
+
+
+title: My Server
+theme: dark
+color: slate
+
+# Sets the background image
+background:
+  image: /bg-images/bg5.jpg
+  blur: sm # Optional: blurs the background slightly
+  saturate: 50 # Optional: adjusts color saturation
+  brightness: 50 # Optional: darkens the background so text is readable
+
+# This creates the "Glassmorphism" translucent card effect
+layout:
+  # Adjust this between 0.1 (very clear) and 0.9 (very dark)
+  cardOpacity: 0.5
+  # This blurs the background directly behind the cards
+  cardBlur: md
