@@ -26,6 +26,13 @@
         server: my-docker
         container: vert
 
+    - Scanner (scanservjs):
+        icon: scanservjs.png
+        href: http://scan.homelab.net
+        description: Document Scanner
+        server: my-docker
+        container: scanservjs
+
 - Infrastructure & Routing:
     - Traefik:
         icon: traefik.png

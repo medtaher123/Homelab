@@ -1,0 +1,23 @@
+services:
+  scanservjs:
+    image: sbs20/scanservjs:latest
+    container_name: scanservjs
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "8093:8080"
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - /etc/sane.d/epson2.conf:/etc/sane.d/epson2.conf:ro
+    labels:
+      - 'traefik.http.routers.scan.rule=HostRegexp(`^scan\..+$`) || PathPrefix(`/scan`)'
+      - "traefik.http.middlewares.scan-remove-prefix.stripprefix.prefixes=/scan"
+      - "traefik.http.routers.scan.middlewares=scan-remove-prefix"
+      - "traefik.http.services.scan.loadbalancer.server.port=8080"
+      - "traefik.docker.network=traefik-network"
+    networks:
+      - default
+      - traefik-network
+networks:
+  traefik-network:
+    external: true
