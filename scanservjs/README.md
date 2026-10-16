@@ -4,6 +4,32 @@
 
 The image used here is [`sbs20/scanservjs`](https://github.com/sbs20/scanservjs).
 
+This is the sequel to the [CUPS print server](../cups/README.md). Printing was solved. Scanning was not.
+
+---
+
+## The Story: Same Machine, Other Direction 📖
+
+So the printer pilgrimage was over. CUPS was running, the USB cable stayed in the server, and I could print from the couch. Living in the future. 🚀
+
+Then I needed to scan something.
+
+Same machine. Same USB port. Completely different problem. Printing pushes paper **out**. Scanning pulls a document **in**, and the only software that could talk to this scanner wanted me physically next to it again. The new routine:
+
+1. Realize I need a scan
+2. Get up from the desk
+3. Walk to the server with the document
+4. Fumble with the scanner software
+5. Email the PDF to myself
+6. Walk back
+7. Repeat
+
+I had just spent a weekend teaching the homelab to print. I was not about to keep walking documents over to it. 😅
+
+SANE already sees the scanner on the host (`scanimage -L` lists it). What was missing was a page I could open from a phone. **scanservjs** is that page: a small web UI in front of SANE, running in Docker with the USB bus passed through, behind Traefik at `scan.<domain>`.
+
+Put the page on the glass, open the site, hit scan, download the PDF. The cable never moves. Same "why didn't I do this sooner?" feeling as CUPS, just in the other direction. 📄
+
 ---
 
 ## Why Use scanservjs? 🤔
