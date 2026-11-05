@@ -33,6 +33,13 @@
         server: my-docker
         container: scanservjs
 
+    - Joplin:
+        icon: joplin.png
+        href: http://joplin.homelab.net
+        description: Note sync server
+        server: my-docker
+        container: joplin
+
 - Infrastructure & Routing:
     - Traefik:
         icon: traefik.png
