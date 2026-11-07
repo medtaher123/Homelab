@@ -40,6 +40,13 @@
         server: my-docker
         container: joplin
 
+    - Syncthing:
+        icon: syncthing.png
+        href: http://syncthing.homelab.net
+        description: Folder sync
+        server: my-docker
+        container: syncthing
+
 - Infrastructure & Routing:
     - Traefik:
         icon: traefik.png
